@@ -33,6 +33,15 @@ find_library( # Sets the name of the path variable.
               # you want CMake to locate.
               log )
 
+find_library( jnigraphics-lib jnigraphics )
+
+include_directories(/Users/liujingbo/Library/Android/sdk/ndk-bundle/sources/transcode-1.1.5/avilib)
+add_library(avi-lib STATIC IMPORTED)
+set_target_properties( avi-lib
+                       PROPERTIES IMPORTED_LOCATION
+                       /Users/liujingbo/Library/Android/sdk/ndk-bundle/sources/transcode-1.1.5/avilib/avilib_static )
+
+
 # Specifies libraries CMake should link to your target library. You
 # can link multiple libraries, such as libraries you define in this
 # build script, prebuilt third-party libraries, or system libraries.
@@ -42,4 +51,8 @@ target_link_libraries( # Specifies the target library.
 
                        # Links the target library to the log library
                        # included in the NDK.
+                       ${avi-lib}
+                       ${jnigraphics-lib}
                        ${log-lib} )
+
+
