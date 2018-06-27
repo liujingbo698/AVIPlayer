@@ -17,8 +17,9 @@ add_library( # Sets the name of the library.
              SHARED
 
              # Provides a relative path to your source file(s).
+             src/main/cpp/Common.cpp
              src/main/cpp/com_liu_aviplayer_AbstractPlayerActivity.cpp
-             src/main/cpp/AVIPlayer.cpp )
+             src/main/cpp/com_liu_aviplayer_BitmapPlayerActivity.cpp )
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -35,11 +36,13 @@ find_library( # Sets the name of the path variable.
 
 find_library( jnigraphics-lib jnigraphics )
 
-include_directories(/Users/liujingbo/Library/Android/sdk/ndk-bundle/sources/transcode-1.1.5/avilib)
+include_directories( ${ANDROID_NDK}/sources/transcode-1.1.5/avilib )
+
 add_library(avi-lib STATIC IMPORTED)
+
 set_target_properties( avi-lib
                        PROPERTIES IMPORTED_LOCATION
-                       /Users/liujingbo/Library/Android/sdk/ndk-bundle/sources/transcode-1.1.5/avilib/avilib_static )
+                       ${ANDROID_NDK}/sources/transcode-1.1.5/avilib/avilib_static )
 
 
 # Specifies libraries CMake should link to your target library. You

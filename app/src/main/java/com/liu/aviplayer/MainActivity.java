@@ -50,13 +50,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void onPlayButtonClick() {
-        Intent intent;
+        Intent intent = null;
 
         // 获得选择的单选按钮ID
         int radioId = playerRadioGroup.getCheckedRadioButtonId();
 
         // 基于ID选择 activity
         switch (radioId) {
+            case R.id.bitmap_player_radio:
+                intent = new Intent(this, BitmapPlayerActivity.class);
+                break;
             default:
                 // throw new UnsupportedOperationException("radioId=" + radioId);
         }
